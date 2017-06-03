@@ -29,6 +29,15 @@ app.get('/products', function(req, res) {
 	});
 })
 
+app.get('/products/:id', function(req, res) {
+	var ref = db.ref("edgedemo/products");
+
+	var id = req.params.id;
+	console.log(id);
+	// Attach an asynchronous callback to read the data at our posts reference
+	res.send(id);
+})
+
 
 
 // start app
