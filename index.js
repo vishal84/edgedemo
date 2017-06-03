@@ -33,8 +33,12 @@ app.get('/products/:id', function(req, res) {
 	var ref = db.ref("edgedemo/products");
 
 	var id = req.params.id;
-	console.log(id);
-	// Attach an asynchronous callback to read the data at our posts reference
+
+	for (var product in ref.val()) {
+		console.log(product.id);
+		alert(console.id);
+	}
+	
 	res.send(id);
 })
 
