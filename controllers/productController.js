@@ -13,32 +13,6 @@ admin.initializeApp({
 // Get a reference to Firebase DB for products, orders, etc
 const db = admin.database();
 const ref = db.ref("edgedemo/products");
-const ordersRef = db.ref("edgedemo/orders");
-ordersRef.push({
-	id: "1",
-	customer: {
-		id: "1",
-		first: "John",
-		last: "Doe",
-		email: "John.Doe@gmail.com",
-		shipping: {
-			street: "55 9th Avenue",
-			city: "New York",
-			state: "NY",
-			zip: "10005"
-		}
-	},
-	cart: {
-		id: "1",
-		products: [3, 7]
-	},
-	payment: {
-		cardNumber: "1234 5678 9012 3456",
-		month: "10",
-		year: "2020",
-		cvv: "123"
-	}
-});
 
 // GET transaction /products
 exports.getAllProducts = function(req, res) {
