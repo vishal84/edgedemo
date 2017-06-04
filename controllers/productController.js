@@ -1,11 +1,5 @@
 'use strict';
 
-// Initialize
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://edgedemo-925ea.firebaseio.com/"
-});
-
 // Get a reference to Firebase DB for products, orders, etc
 const db = admin.database();
 const ref = db.ref("edgedemo/produdcts");

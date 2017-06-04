@@ -6,6 +6,12 @@ const bodyParser = require('body-parser');
 const admin = require("firebase-admin");
 const serviceAccount = require("./edgedemo-925ea.json");
 
+// Initialize
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://edgedemo-925ea.firebaseio.com/"
+});
+
 // init app settings
 const app = express();
 const port = 3000;
