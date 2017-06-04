@@ -21,7 +21,9 @@ exports.getProduct = function(req, res) {
 
 	if (Object.keys(req.query).length > 0) {
 
+		// get the query parameter for product id
 		var productId = req.query.id;
+
 		console.log(Object.keys(req.query).length);
 		ref.orderByValue().on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
@@ -37,6 +39,7 @@ exports.getProduct = function(req, res) {
 
 	} else {
 
+		// get all products
 		ref.on("value", function(snapshot) {
 			res.json(snapshot.val());
 			console.log(snapshot.val());
