@@ -4,11 +4,7 @@
 const admin = require("firebase-admin");
 const serviceAccount = require("../edgedemo-925ea.json");
 
-/*// Initialize
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://edgedemo-925ea.firebaseio.com/"
-});*/
+var models = require('../models/models.js');
 
 // Get a reference to Firebase DB for products, orders, etc
 const db = admin.database();
@@ -47,6 +43,7 @@ exports.placeOrder = function(req, res) {
 exports.getOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
+
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
