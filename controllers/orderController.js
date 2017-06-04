@@ -72,6 +72,7 @@ exports.updateOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
+    			res.json(updatedOrder;
     			console.log("Updated order " + orderId);
     		}
   		});
@@ -91,6 +92,7 @@ exports.cancelOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).removeValue();
+    			res.send(orderId);
     			console.log("Cancelled order " + orderId);
     		}
   		});
