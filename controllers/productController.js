@@ -33,9 +33,9 @@ exports.getProduct = function(req, res) {
 	ref.orderByChild("id").on("value", function(snapshot) {
 		
 		console.log(productId);
-		for (var product in snapshot.key) {
-			console.log(product.id);
-		}
+		snapshot.forEach(function(data) {
+			console.log(data.val());
+		});
 		/*
 		if (snapshot.val().id = productId) {
 			res.send(snapshot.val());
