@@ -18,7 +18,7 @@ ref.set({
 	cardNumber: "1111222233334444",
 	expMonth: "10",
 	expYear: "2020",
-	cvv:
+	cvv: "123"
 });
 
 // GET transaction /payments
