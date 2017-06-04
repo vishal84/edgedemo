@@ -40,6 +40,7 @@ app.get('/products/:id', function(req, res) {
 			console.log(product.id);
 			if (product.id = id) {
 				var theProduct = JSON.stringify(product);
+				res.setHeader("Content-Type", "application/json");
 				res.send(theProduct);
 			}
 		}
