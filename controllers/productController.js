@@ -22,6 +22,7 @@ exports.getProduct = function(req, res) {
 	if (Object.keys(req.query).length === 0) {
 
 		var productId = req.query.id;
+		consoe.log(productId);
 		ref.orderByValue().on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
 	    		if (productId == data.val().id) {
@@ -43,7 +44,6 @@ exports.getProduct = function(req, res) {
 			res.send(errorObject);
 			console.log("The read failed: " + errorObject.code);
 		});
-
 	}
 };
 
