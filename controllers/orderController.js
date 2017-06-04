@@ -74,12 +74,10 @@ exports.updateOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			key = data.key;
-    			//ref.child(data.key).update(updatedOrder);
-    			console.log("Found order " + orderId);
+    			ref.child(data.key).update(updatedOrder);
     		}
   		});
 
-  		ref.child(key).update(updatedOrder);
   		console.log("Updated order " + orderId);
   		res.send();
 		
@@ -93,7 +91,7 @@ exports.updateOrder = function(req, res) {
 exports.cancelOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
-	ref.orderByValue().on("value", function(snapshot) {
+	ref.orderByValue().once("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
