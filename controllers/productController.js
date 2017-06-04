@@ -13,6 +13,7 @@ admin.initializeApp({
 // Get a reference to Firebase DB for products, orders, etc
 const db = admin.database();
 const ref = db.ref("edgedemo/products");
+const ordersRef = db.ref("edgedemo/orders");
 
 // GET transaction /products
 exports.getAllProducts = function(req, res) {
