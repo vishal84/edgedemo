@@ -72,7 +72,7 @@ exports.updateOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
-    			res.json(updatedOrder;
+    			res.json(updatedOrder);
     			console.log("Updated order " + orderId);
     		}
   		});
