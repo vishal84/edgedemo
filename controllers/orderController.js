@@ -69,7 +69,7 @@ exports.updateOrder = function(req, res) {
 	var updatedOrder = req.body;
 	var key;
 
-	ref.orderByValue().on("value", function(snapshot) {
+	ref.orderByValue().once("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
