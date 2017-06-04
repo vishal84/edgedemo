@@ -34,6 +34,9 @@ exports.getProduct = function(req, res) {
 
 		snapshot.forEach(function(data) {
     		console.log("The " + data.key + " dinosaur's score is " + data.val().id);
+    		if (productId == data.val().id) {
+    			console.log("found it");
+    		}
   		});
 		
 	}, function(errorObject) {
