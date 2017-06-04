@@ -36,7 +36,6 @@ exports.placeOrder = function(req, res) {
 			console.log("New order placed: " + newOrder.key);
 		}
 	});
-	
 };
 
 // GET transaction /orders/:orderId

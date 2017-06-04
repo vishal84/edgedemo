@@ -32,6 +32,7 @@ exports.getAllProducts = function(req, res) {
 exports.getProduct = function(req, res) {
 
 	var productId = req.params.productId;
+	
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
