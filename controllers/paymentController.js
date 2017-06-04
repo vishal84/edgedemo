@@ -37,10 +37,10 @@ exports.addPaymentMethod = function(req, res) {
 	newPayment.set(payment, function(error) {
 		if (error) {
 			res.json(error);
-			console.log("The payment transaction failed: " + error);
+			console.log("The add a payment method failed: " + error);
 		} else {
 			res.json(newPayment.key);
-			console.log("Payment transaction accepted: " + newPayment.key);
+			console.log("Payment added: " + newPayment.key);
 		}
 	});
 
