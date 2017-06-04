@@ -28,7 +28,7 @@ exports.getAllProducts = function(req, res) {
 	});
 };
 
-// GET transaction /products?id=:id
+// GET transaction /product?id=:id
 exports.getProduct = function(req, res) {
 
 	var productId = req.query.id;
