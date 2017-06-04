@@ -11,7 +11,7 @@ const db = admin.database();
 const ref = db.ref("edgedemo/payments");
 
 
-var key = ref.push();
+var key = ref.push().key;
 ref.child(key).set({
 	first: "John",
 	last: "Doe",
