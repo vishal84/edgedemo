@@ -28,11 +28,11 @@ exports.getAllProducts = function(req, res) {
 	});
 };
 
-// GET transaction /products/:productId
+// GET transaction /products?id=:id
 exports.getProduct = function(req, res) {
 
-	var productId = req.params.productId;
-	
+	var productId = req.query.id;
+
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
