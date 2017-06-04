@@ -7,7 +7,7 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('/routes/routes.js');
+var routes = require('./routes/routes.js');
 routes(app);
 
 // start app
