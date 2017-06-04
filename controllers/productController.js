@@ -22,7 +22,7 @@ exports.getProduct = function(req, res) {
 	if (Object.keys(req.query).length === 0) {
 
 		var productId = req.query.id;
-		consoe.log(productId);
+		console.log(Object.keys(req.query).length);
 		ref.orderByValue().on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
 	    		if (productId == data.val().id) {
