@@ -78,14 +78,13 @@ exports.updateOrder = function(req, res) {
     		}
   		});
 
-		if (found) {
+		if (found == true) {
 			console.log("Updated order " + orderId);
 	  		res.json({ message: "Updated order " + orderId } );	
 		} else {
 			console.log("Could not find order: " + orderId);
 	  		res.json({ message: "Could not find order " + orderId } );	
 		}
-  		
 		
 	}, function(errorObject) {
 		console.log("The update failed: " + errorObject.code);
@@ -97,17 +96,25 @@ exports.updateOrder = function(req, res) {
 exports.cancelOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
+	var found;
+
 	ref.orderByValue().once("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).removeValue();
+    			found = true;
     		}
-
-    		console.log("Cancelled order " + orderId);
-    		res.send({ message: "Cancelled order " + orderId } );
   		});
-		
+
+		if (found == true) {
+			console.log("Cancelled order " + orderId);
+			res.send({ message: "Cancelled order " + orderId } );
+		} else {
+			console.log("Could not find order: " + orderId);
+	  		res.json({ message: "Could not find order " + orderId } );	
+		}
+
 	}, function(errorObject) {
 		res.send(errorObject);
 		console.log("The update failed: " + errorObject.code);
