@@ -73,7 +73,7 @@ exports.updateOrder = function(req, res) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
     			console.log("Updated order " + orderId);
-    			res.send({ message: "Order " + orderId + " updated!"});
+    			//res.send({ message: "Order " + orderId + " updated!"});
     		}
   		});
 		
