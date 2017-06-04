@@ -30,10 +30,7 @@ ordersRef.push({
 	},
 	cart: {
 		id: "1",
-		products: {
-			{ id: 3 },
-			{ id: 7 } 
-		},
+		products: [3, 7]
 	},
 	payment: {
 		cardNumber: "1234 5678 9012 3456",
