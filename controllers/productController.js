@@ -14,7 +14,7 @@ admin.initializeApp({
 const db = admin.database();
 const ref = db.ref("edgedemo/produdcts");
 
-// /products GET transaction
+// GET transaction /products
 exports.getAllProducts = function(req, res) {
 
 	ref.on("value", function(snapshot) {
@@ -26,7 +26,7 @@ exports.getAllProducts = function(req, res) {
 	});
 };
 
-// /products/:productId GET transaction
+// GET transaction /products/:productId
 exports.getProduct = function(req, res) {
 
 	var productId = req.params.taskId;
