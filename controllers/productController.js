@@ -19,7 +19,7 @@ const ref = db.ref("edgedemo/products");
 // GET transaction /products?id=:id
 exports.getProduct = function(req, res) {
 
-	if (Object.keys(req.query).length === 0) {
+	if (Object.keys(req.query).length > 0) {
 
 		var productId = req.query.id;
 		console.log(Object.keys(req.query).length);
