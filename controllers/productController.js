@@ -33,6 +33,7 @@ exports.getProduct = function(req, res) {
 	ref.orderByChild("id").on("value", function(snapshot) {
 		
 		console.log(productId);
+		console.log(snapshot.key);
 		/*
 		if (snapshot.val().id = productId) {
 			res.send(snapshot.val());
