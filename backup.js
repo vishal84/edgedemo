@@ -89,53 +89,28 @@ productRef.push({
 	image: "summerlily.jpg"
 });
 
-
-app.get('/products', function(req, res) {
-	var ref = db.ref("edgedemo/products");
-
-	// Attach an asynchronous callback to read the data on products reference
-	ref.on("value", function(snapshot) {
-	  res.send(snapshot.val());
-	  console.log(snapshot.val());
-	}, function (errorObject) {
-	  console.log("The read failed: " + errorObject.code);
-	});
-})
-
-app.get('/products/:id', function(req, res) {
-	
-	var ref = db.ref("edgedemo/products");
-	var id = req.params.id;
-	
-	ref.on("value", function(snapshot) {
-	
-		var products = snapshot.val();
-
-	  	for (var product in products) {
-			console.log(product.id);
-			if (product.id = id) {
-				var theProduct = JSON.stringify(product);
-				res.write(theProduct);
-			}
+ordersRef.push({
+	id: "1",
+	customer: {
+		id: "1",
+		first: "John",
+		last: "Doe",
+		email: "John.Doe@gmail.com",
+		shipping: {
+			street: "55 9th Avenue",
+			city: "New York",
+			state: "NY",
+			zip: "10005"
 		}
-
-	}, function (errorObject) {
-	  console.log("The read failed: " + errorObject.code);
-	});
-})
-
-
-// Get Firebase object and service account key
-const admin = require("firebase-admin");
-const serviceAccount = require("./edgedemo-925ea.json");
-
-// Initialize
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://edgedemo-925ea.firebaseio.com/"
+	},
+	cart: {
+		id: "1",
+		products: [3, 7]
+	},
+	payment: {
+		cardNumber: "1234 5678 9012 3456",
+		month: "10",
+		year: "2020",
+		cvv: "123"
+	}
 });
-
-// Get a reference to Firebase DB for products, orders, etc
-const db = admin.database();
-const ref = db.ref("edgedemo");
-const productRef = ref.child("products");
