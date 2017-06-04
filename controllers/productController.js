@@ -31,10 +31,12 @@ exports.getProduct = function(req, res) {
 
 	var productId = req.params.productId;
 	ref.orderByChild("id").on("value", function(snapshot) {
-		
-		console.log(productId);
+
 		snapshot.forEach(function(data) {
-			console.log(data.val());
+			if (data.val().id = productId) {
+				console.log(data.val());
+				res.send(data.val());
+			}
 		});
 		/*
 		if (snapshot.val().id = productId) {
