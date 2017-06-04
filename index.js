@@ -35,11 +35,11 @@ app.get('/products/:id', function(req, res) {
 	var id = req.params.id;
 	ref.on("value", function(snapshot) {
 		var products = snapshot.val();
-		
+
 	  	for (var product in products) {
 			console.log(product.id);
 			if (product.id = id) {
-				var theProduct = JSON.parse(product);
+				var theProduct = JSON.stringify(product);
 				res.send(theProduct);
 			}
 		}
