@@ -19,7 +19,7 @@ const ref = db.ref("edgedemo/products");
 // GET transaction /products?id=:id
 exports.getProduct = function(req, res) {
 
-	if (Object.keys(req.query).length != 0) {
+	if (req.query.id = null) {
 
 		ref.on("value", function(snapshot) {
 			res.json(snapshot.val());
