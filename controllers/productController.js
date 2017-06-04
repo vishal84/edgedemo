@@ -31,7 +31,7 @@ exports.getProduct = function(req, res) {
 
 	var productId = req.params.taskId;
 	ref.orderByChild("id").on("value", function(snapshot) {
-		if (snapshot.key = productId) {
+		if (snapshot.val().id = productId) {
 			res.send(snapshot.val());
 			console.log(snapshot.val());
 		}
