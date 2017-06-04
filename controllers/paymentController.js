@@ -10,6 +10,24 @@ var models = require('../models/models.js');
 const db = admin.database();
 const ref = db.ref("edgedemo/payments");
 
+exports.getPalPayDetails = function(req, res) {
+
+	var first = req.query.first;
+	var last = req.query.last;
+
+	ref.orderByValue().on("value", function(snapshot) {
+		snapshot.forEach(function(data) {
+    		if (first == data.val().first && last == data.val().last) {
+    			res.json(data.val());
+    			console.log(data.val());
+    		}
+  		});
+	}, function(errorObject) {
+		res.send(errorObject);
+		console.log("The read failed: " + errorObject.code);
+	});
+};
+
 // POST transaction /payments
 exports.payWithPalPay = function(req, res) {
 

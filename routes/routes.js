@@ -22,6 +22,7 @@ module.exports = function(app) {
 
   // paymentController routes
   app.route('/payments')
+  .get(payments.getPalPayDetails);
   .post(payments.payWithPalPay);
 
 };
