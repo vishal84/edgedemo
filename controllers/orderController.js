@@ -73,14 +73,13 @@ exports.updateOrder = function(req, res) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
     			console.log("Updated order " + orderId);
-    			res.json({ message: "Order " + orderId + " updated!"});
-    			break;
+    			res.send({ message: "Order " + orderId + " updated!"});
     		}
   		});
 		
 	}, function(errorObject) {
 		console.log("The update failed: " + errorObject.code);
-		return res.send(errorObject);
+		//return res.send(errorObject);
     });
 };
 
