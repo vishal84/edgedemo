@@ -67,17 +67,25 @@ exports.updateOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
 	var updatedOrder = req.body;
+	var found;
 
 	ref.orderByValue().once("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
+    			found = true;
     		}
   		});
 
-  		console.log("Updated order " + orderId);
-  		res.json({ message: "Updated order " + orderId } );
+		if (found) {
+			console.log("Updated order " + orderId);
+	  		res.json({ message: "Updated order " + orderId } );	
+		} else {
+			console.log("Could not find order: " + orderId);
+	  		res.json({ message: "Could not find order " + orderId } );	
+		}
+  		
 		
 	}, function(errorObject) {
 		console.log("The update failed: " + errorObject.code);
