@@ -33,7 +33,7 @@ exports.getProduct = function(req, res) {
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
-    		console.log("The " + data.key + " dinosaur's score is " + data.val());
+    		console.log("The " + data.key + " dinosaur's score is " + data.val().id);
   		});
 		
 	}, function(errorObject) {
