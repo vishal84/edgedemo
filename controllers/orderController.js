@@ -81,7 +81,7 @@ exports.updateOrder = function(req, res) {
 	}, function(errorObject) {
 		console.log("The update failed: " + errorObject.code);
 		return res.send(errorObject);
-    }
+    });
 };
 
 // DELETE transaction /orders/:orderId
