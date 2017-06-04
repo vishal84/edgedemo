@@ -14,6 +14,15 @@ admin.initializeApp({
 const db = admin.database();
 const ref = db.ref("edgedemo/products");
 const ordersRef = db.ref("edgedemo/orders");
+ordersRef.push({
+	id: "8",
+	sku: "DFw83L-8",
+	title: "Sugar N Spice",
+	description: "Magnis magnis litora lacus pretium bibendum ut justo nonummy erat porttitor a placerat ac ac netus feugiat imperdiet aliquam suscipit",
+	type: "Birthday",
+	price: "$17.99",
+	image: "sugarnspice.jpg"
+});
 
 // GET transaction /products
 exports.getAllProducts = function(req, res) {
