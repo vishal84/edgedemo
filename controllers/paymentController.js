@@ -12,7 +12,7 @@ const ref = db.ref("edgedemo/payments");
 
 
 var key = ref.push();
-ref.set({
+ref.child(key).set({
 	first: "John",
 	last: "Doe",
 	cardNumber: "1111222233334444",
