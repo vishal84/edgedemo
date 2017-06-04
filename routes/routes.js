@@ -4,6 +4,7 @@ module.exports = function(app) {
 
   var products = require('../controllers/productController.js');
   var orders = require('../controllers/orderController.js');
+  var payments = require('../controllers/paymentController.js');
 
   // productController routes
   app.route('/products')
@@ -21,5 +22,9 @@ module.exports = function(app) {
 	.get(orders.getOrder)
 	.put(orders.updateOrder)
 	.delete(orders.cancelOrder);
+
+  // paymentController routes
+  app.route('/payments')
+  .post(payments.payWithPalPay);
 
 };

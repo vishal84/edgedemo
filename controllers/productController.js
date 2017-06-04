@@ -14,7 +14,17 @@ admin.initializeApp({
 
 // Get a reference to Firebase DB for products, orders, etc
 const db = admin.database();
-const ref = db.ref("edgedemo/products");
+const ref = db.ref("edgedemo/payments");
+
+var key = ref.push();
+ref.set({
+	first: "John",
+	last: "Doe",
+	cardNumber: "1111222233334444",
+	expMonth: "10",
+	expYear: "2020",
+	cvv: "243"
+});
 
 // GET transaction /products
 exports.getAllProducts = function(req, res) {
@@ -32,7 +42,7 @@ exports.getAllProducts = function(req, res) {
 exports.getProduct = function(req, res) {
 
 	var productId = req.params.productId;
-	
+
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
