@@ -33,17 +33,9 @@ exports.getProduct = function(req, res) {
 	ref.orderByValue().on("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
-			console.log(data.val().id);
-			if (data.val().id = productId) {
-				console.log(data.val());
-				res.json(data.val());
-			}
-		});
-		/*
-		if (snapshot.val().id = productId) {
-			res.send(snapshot.val());
-			console.log(snapshot.val());
-		}*/
+    		console.log("The " + data.key + " dinosaur's score is " + data.val());
+  		});
+		
 	}, function(errorObject) {
 		res.send(errorObject);
 		console.log("The read failed: " + errorObject.code);
