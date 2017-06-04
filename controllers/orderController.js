@@ -37,7 +37,7 @@ exports.placeOrder = function(req, res) {
 			console.log("The read failed: " + error);
 		} else {
 			res.json(newOrder.key);
-			console.log("New Order Placed: " + newOrder.key);
+			console.log("New order placed: " + newOrder.key);
 		}
 	});
 	
@@ -106,3 +106,4 @@ exports.cancelOrder = function(req, res) {
 		console.log("The update failed: " + errorObject.code);
 	});
 };
+
