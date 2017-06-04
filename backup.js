@@ -114,3 +114,15 @@ ordersRef.push({
 		cvv: "123"
 	}
 });
+
+
+var key = ref.push().key;
+ref.child(key).set({
+	first: "John",
+	last: "Doe",
+	cardNumber: "1111222233334444",
+	expMonth: "10",
+	expYear: "2020",
+	cvv: "123"
+});
+

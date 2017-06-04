@@ -16,35 +16,34 @@ admin.initializeApp({
 const db = admin.database();
 const ref = db.ref("edgedemo/products");
 
-// GET transaction /products
-exports.getAllProducts = function(req, res) {
-
-	ref.on("value", function(snapshot) {
-		res.json(snapshot.val());
-		console.log(snapshot.val());
-	}, function (errorObject) {
-		res.send(errorObject);
-		console.log("The read failed: " + errorObject.code);
-	});
-};
-
-// GET transaction /products/:productId
+// GET transaction /products?id=:id
 exports.getProduct = function(req, res) {
 
-	var productId = req.params.productId;
+	if (Object.keys(req.query).length > 0) {
 
-	ref.orderByValue().on("value", function(snapshot) {
+		ref.on("value", function(snapshot) {
+			res.json(snapshot.val());
+			console.log(snapshot.val());
+		}, function (errorObject) {
+			res.send(errorObject);
+			console.log("The read failed: " + errorObject.code);
+		});
 
-		snapshot.forEach(function(data) {
-    		if (productId == data.val().id) {
-    			res.json(data.val());
-    			console.log(data.val());
-    		}
-  		});
-		
-	}, function(errorObject) {
-		res.send(errorObject);
-		console.log("The read failed: " + errorObject.code);
-	});
+	} else {
+
+		var productId = req.query.id;
+		ref.orderByValue().on("value", function(snapshot) {
+			snapshot.forEach(function(data) {
+	    		if (productId == data.val().id) {
+	    			res.json(data.val());
+	    			console.log(data.val());
+	    		}
+	  		});
+		}, function(errorObject) {
+			res.send(errorObject);
+			console.log("The read failed: " + errorObject.code);
+		});
+
+	}
 };
 

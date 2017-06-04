@@ -8,9 +8,6 @@ module.exports = function(app) {
 
   // productController routes
   app.route('/products')
-	.get(products.getAllProducts);
-
-  app.route('/products/:productId')
 	.get(products.getProduct);
 
   // orderController routes

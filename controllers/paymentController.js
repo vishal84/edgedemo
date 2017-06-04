@@ -10,18 +10,7 @@ var models = require('../models/models.js');
 const db = admin.database();
 const ref = db.ref("edgedemo/payments");
 
-
-var key = ref.push().key;
-ref.child(key).set({
-	first: "John",
-	last: "Doe",
-	cardNumber: "1111222233334444",
-	expMonth: "10",
-	expYear: "2020",
-	cvv: "123"
-});
-
-// GET transaction /payments
+// POST transaction /payments
 exports.payWithPalPay = function(req, res) {
 
 	ref.on("value", function(snapshot) {

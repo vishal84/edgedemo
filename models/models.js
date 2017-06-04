@@ -17,6 +17,7 @@ var Order = {
   },
   id: "",
   payment: {
+    palpay: "",
     cardNumber: "",
     cvv: "",
     month: "",
@@ -27,11 +28,22 @@ var Order = {
 }
 
 var Product = {
-    description: "",
-    id: "",
-    image: "",
-    price: "",
-    sku: "",
-    title: "",
-    type: ""
-  }
+  description: "",
+  id: "",
+  image: "",
+  price: "",
+  sku: "",
+  title: "",
+  type: ""
+}
+
+var Payment = {
+  cardNumber: "",
+  cvv: "",
+  expMonth: "",
+  expYear: "",
+  first: "",
+  last: "",
+  orderId: ""
+}
+
