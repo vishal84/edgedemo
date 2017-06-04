@@ -41,7 +41,7 @@ app.get('/products/:id', function(req, res) {
 			if (product.id = id) {
 				var theProduct = JSON.stringify(product);
 				res.setHeader("Content-Type", "application/json");
-				res.send(theProduct);
+				res.write(theProduct);
 			}
 		}
 	}, function (errorObject) {
