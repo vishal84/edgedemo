@@ -102,7 +102,7 @@ exports.cancelOrder = function(req, res) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
-    			ref.child(data.key).removeValue();
+    			ref.child(data.key).remove();
     			found = true;
     		}
   		});
