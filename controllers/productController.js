@@ -29,12 +29,15 @@ exports.getAllProducts = function(req, res) {
 // GET transaction /products/:productId
 exports.getProduct = function(req, res) {
 
-	var productId = req.params.taskId;
+	var productId = req.params.productId;
 	ref.orderByChild("id").on("value", function(snapshot) {
+		
+		console.log(productId);
+		/*
 		if (snapshot.val().id = productId) {
 			res.send(snapshot.val());
 			console.log(snapshot.val());
-		}
+		}*/
 	}, function(errorObject) {
 		res.send(errorObject);
 		console.log("The read failed: " + errorObject.code);
