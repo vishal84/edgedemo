@@ -7,7 +7,7 @@ module.exports = function(app) {
   var payments = require('../controllers/paymentController.js');
 
   // productController routes
-  app.route('/products')
+  app.route('/products*')
 	.get(products.getProduct);
 
   // orderController routes
