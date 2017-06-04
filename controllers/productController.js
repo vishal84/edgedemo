@@ -2,7 +2,7 @@
 
 // Get Firebase object and service account key
 const admin = require("firebase-admin");
-const serviceAccount = require("./edgedemo-925ea.json");
+const serviceAccount = require("../edgedemo-925ea.json");
 
 // Initialize
 admin.initializeApp({
