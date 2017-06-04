@@ -27,6 +27,7 @@ exports.placeOrder = function(req, res) {
 
 	var order = req.body;
 	var newOrder = ref.push();
+	
 	newOrder.set(order, function(error) {
 		if (error) {
 			res.json(error);

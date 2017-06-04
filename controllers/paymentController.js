@@ -13,13 +13,19 @@ const ref = db.ref("edgedemo/payments");
 // POST transaction /payments
 exports.payWithPalPay = function(req, res) {
 
-	ref.on("value", function(snapshot) {
-		res.json(snapshot.val());
-		console.log(snapshot.val());
-	}, function (errorObject) {
-		res.send(errorObject);
-		console.log("The read failed: " + errorObject.code);
+	var payment = req.body;
+	var newPayment = ref.push();
+
+	newPayment.set(payment, function(error) {
+		if (error) {
+			res.json(error);
+			console.log("The payment transaction failed: " + error);
+		} else {
+			res.json(newPayment.key);
+			console.log("Payment transaction accepted: " + newPayment.key);
+		}
 	});
+
 };
 
 
