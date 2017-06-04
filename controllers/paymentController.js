@@ -29,7 +29,7 @@ exports.getPalPayDetails = function(req, res) {
 };
 
 // POST transaction /payments
-exports.payWithPalPay = function(req, res) {
+exports.addPaymentMethod = function(req, res) {
 
 	var payment = req.body;
 	var newPayment = ref.push();
