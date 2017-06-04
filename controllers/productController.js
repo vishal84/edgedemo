@@ -15,13 +15,32 @@ const db = admin.database();
 const ref = db.ref("edgedemo/products");
 const ordersRef = db.ref("edgedemo/orders");
 ordersRef.push({
-	id: "8",
-	sku: "DFw83L-8",
-	title: "Sugar N Spice",
-	description: "Magnis magnis litora lacus pretium bibendum ut justo nonummy erat porttitor a placerat ac ac netus feugiat imperdiet aliquam suscipit",
-	type: "Birthday",
-	price: "$17.99",
-	image: "sugarnspice.jpg"
+	id: "1",
+	customer: {
+		id: "1",
+		first: "John",
+		last: "Doe",
+		email: "John.Doe@gmail.com",
+		shipping: {
+			street: "55 9th Avenue",
+			city: "New York",
+			state: "NY",
+			zip: "10005"
+		}
+	},
+	cart: {
+		id: "1",
+		products: {
+			{ id: 3 },
+			{ id: 7 } 
+		},
+	},
+	payment: {
+		cardNumber: "1234 5678 9012 3456",
+		month: "10",
+		year: "2020",
+		cvv: "123"
+	}
 });
 
 // GET transaction /products
