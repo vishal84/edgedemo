@@ -19,16 +19,18 @@ const ref = db.ref("edgedemo/products");
 // GET transaction /products
 exports.getAllProducts = function(req, res) {
 
-	ref.on("value", function(snapshot) {
-		res.json(snapshot.val());
-		console.log(snapshot.val());
-	}, function (errorObject) {
-		res.send(errorObject);
-		console.log("The read failed: " + errorObject.code);
-	});
+	if (Object.keys(req.query).length === 0) {
+		ref.on("value", function(snapshot) {
+			res.json(snapshot.val());
+			console.log(snapshot.val());
+		}, function (errorObject) {
+			res.send(errorObject);
+			console.log("The read failed: " + errorObject.code);
+		});
+	}
 };
 
-// GET transaction /product?id=:id
+// GET transaction /products?id=:id
 exports.getProduct = function(req, res) {
 
 	var productId = req.query.id;
