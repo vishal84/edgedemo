@@ -73,17 +73,15 @@ exports.updateOrder = function(req, res) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
     			console.log("Updated order " + orderId);
-    			res.send("OK");
-    			res.end();
+    			res.json({ message: "Order " + orderId + " updated!"});
     		}
   		});
-  		res.send("Unable to find order id");
-  		res.end();
+  		res.json({ message: "Unable to find order id: " + orderId });
 		
 	}, function(errorObject) {
-		res.send(errorObject);
 		console.log("The update failed: " + errorObject.code);
-	});
+		return res.send(errorObject);
+    }
 };
 
 // DELETE transaction /orders/:orderId
