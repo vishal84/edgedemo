@@ -83,7 +83,7 @@ exports.updateOrder = function(req, res) {
 };
 
 // DELETE transaction /orders/:orderId
-exports.updateOrder = function(req, res) {
+exports.cancelOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
 	ref.orderByValue().on("value", function(snapshot) {
