@@ -67,19 +67,17 @@ exports.updateOrder = function(req, res) {
 
 	var orderId = req.params.orderId;
 	var updatedOrder = req.body;
-	var key;
 
 	ref.orderByValue().once("value", function(snapshot) {
 
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
-    			key = data.key;
     			ref.child(data.key).update(updatedOrder);
     		}
   		});
 
   		console.log("Updated order " + orderId);
-  		res.send();
+  		res.json({ message: "Updated order " + orderId } );
 		
 	}, function(errorObject) {
 		console.log("The update failed: " + errorObject.code);
@@ -96,9 +94,10 @@ exports.cancelOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).removeValue();
-    			res.json(orderId);
-    			console.log("Cancelled order " + orderId);
     		}
+
+    		console.log("Cancelled order " + orderId);
+    		res.send({ message: "Cancelled order " + orderId } );
   		});
 		
 	}, function(errorObject) {
