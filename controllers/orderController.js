@@ -33,7 +33,7 @@ exports.placeOrder = function(req, res) {
 	var newOrder = ref.push();
 	newOrder.set(order, function(error) {
 		if (error) {
-			res.send(error);
+			res.json(error);
 			console.log("The read failed: " + error);
 		} else {
 			res.json(newOrder.key);
@@ -72,7 +72,7 @@ exports.updateOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
-    			res.send(updatedOrder);
+    			res.json(updatedOrder);
     			console.log("Updated order " + orderId);
     		}
   		});
@@ -92,7 +92,7 @@ exports.cancelOrder = function(req, res) {
 		snapshot.forEach(function(data) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).removeValue();
-    			res.send(orderId);
+    			res.json(orderId);
     			console.log("Cancelled order " + orderId);
     		}
   		});
