@@ -1,0 +1,31 @@
+{
+  "name": "edgedemo",
+  "version": "1.0.0",
+  "description": "REST API for edgedemo",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "firebase-admin": "^5.0.0",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishal84/edgedemo.git"
+  },
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "author": "Vishal Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishal84/edgedemo/issues"
+  },
+  "homepage": "https://github.com/vishal84/edgedemo#readme"
+}
