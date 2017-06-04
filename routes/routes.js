@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.route('/products')
 	.get(products.getAllProducts);
 
-  app.route('/products*')
+  app.route('/products/:productId')
 	.get(products.getProduct);
 
   // orderController routes
@@ -21,7 +21,5 @@ module.exports = function(app) {
 	.get(orders.getOrder)
 	.put(orders.updateOrder)
 	.delete(orders.cancelOrder);
-
-
 
 };
