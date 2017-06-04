@@ -18,7 +18,7 @@ const ref = db.ref("edgedemo/produdcts");
 exports.getAllProducts = function(req, res) {
 
 	ref.on("value", function(snapshot) {
-		res.json(snapshot.val());
+		res.send(snapshot.val());
 		console.log(snapshot.val());
 	}, function (errorObject) {
 		res.send(errorObject);
@@ -32,7 +32,7 @@ exports.getProduct = function(req, res) {
 	var productId = req.params.taskId;
 	ref.orderByChild("id").on("value", function(snapshot) {
 		if (snapshot.key = productId) {
-			res.json(snapshot.val());
+			res.send(snapshot.val());
 			console.log(snapshot.val());
 		}
 	}, function(errorObject) {
