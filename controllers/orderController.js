@@ -73,10 +73,12 @@ exports.updateOrder = function(req, res) {
     		if (orderId == data.val().id) {
     			ref.child(data.key).update(updatedOrder);
     			console.log("Updated order " + orderId);
-    			return res.send("OK");
+    			res.send("OK");
+    			res.end();
     		}
   		});
-  		return res.send("Unable to find order id");
+  		res.send("Unable to find order id");
+  		res.end();
 		
 	}, function(errorObject) {
 		res.send(errorObject);
