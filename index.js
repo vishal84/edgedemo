@@ -33,13 +33,19 @@ app.get('/products/:id', function(req, res) {
 	var ref = db.ref("edgedemo/products");
 
 	var id = req.params.id;
-
-	for (var product in ref.val()) {
-		console.log(product.id);
-		alert(console.id);
-	}
-	
-	res.send(id);
+	ref.on("value", function(snapshot) {
+		var products = snapshot.val();
+		
+	  	for (var product in products) {
+			console.log(product.id);
+			if (product.id = id) {
+				var theProduct = JSON.parse(product);
+				res.send(theProduct);
+			}
+		}
+	}, function (errorObject) {
+	  console.log("The read failed: " + errorObject.code);
+	});
 })
 
 
